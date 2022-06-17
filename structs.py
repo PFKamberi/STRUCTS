@@ -222,7 +222,7 @@ def structs_univariate(training_data_path, test_data_path, method, n_splits = 5,
 
     return res
 
-def train_test_prefix_plain(X_training, X_test, Y_training, Y_test, method): #plain => without folds
+def structs_univariate_unfolded(X_training, X_test, Y_training, Y_test, method): 
 
     X_training = np.nan_to_num(X_training).astype(np.float32) # replace NaN with 0 
     X_test = np.nan_to_num(X_test).astype(np.float32) # replace NaN with 0 
@@ -312,7 +312,7 @@ def structs_multivariate(train_file_paths, test_file_paths, method, n_splits = 2
 
             print('\nDimension: ', i + 1)
 
-            univarite_results = train_test_prefix_plain(X_training[i], X_test[i], Y_training[i], Y_test[i], method = method)
+            univarite_results = structs_univariate_unfolded(X_training[i], X_test[i], Y_training[i], Y_test[i], method = method)
 
             preds.append(univarite_results[0])
             training_time[fold] += univarite_results[1]
